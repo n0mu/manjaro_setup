@@ -3,6 +3,7 @@
   hosts: 127.0.0.1
   connection: local
   become: yes
+  become_user: root
   tasks:
     - name: Create a 4096-bit SSH key for user {{ user }}
       user:
