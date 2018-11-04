@@ -16,3 +16,17 @@
       package:
         name: udiskie
         state: present
+
+    - name: Activate udiskie at startup
+      blockinfile:
+        path: /home/{{ user }}/.xinitrc
+        block: udiskie &
+        marker: "# Usb automount {mark} ANSIBLE MANAGED BLOCK"
+        insertbefore: exec $(get_session)
+
+    - name: Switch 'caps lock' key with 'esc'
+      blockinfile:
+        path: /home/{{ user }}/.xinitrc
+        block: /usr/bin/setxkbmap -option "caps:swapescape"
+        marker: "# Switch 'caps lock' key with 'esc' {mark} ANSIBLE MANAGED BLOCK"
+        insertbefore: exec $(get_session)
