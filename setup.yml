@@ -22,7 +22,7 @@
         path: /home/{{ user }}/.xinitrc
         block: udiskie &
         marker: "# Usb automount {mark} ANSIBLE MANAGED BLOCK"
-        insertbefore: "exec $(get_session)"
+        insertbefore: "exec"
 
 
     - name: Switch 'caps lock' key with 'esc'
@@ -30,7 +30,7 @@
         path: /home/{{ user }}/.xinitrc
         block: /usr/bin/setxkbmap -option "caps:swapescape"
         marker: "# Switch 'caps lock' key with 'esc' {mark} ANSIBLE MANAGED BLOCK"
-        insertbefore: "exec $(get_session)"
+        insertbefore: "exec"
 
 
     - name: Delete default directories
