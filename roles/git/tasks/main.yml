@@ -1,0 +1,13 @@
+---
+
+- name: Create gitconfig dir
+  file:
+    path: /home/{{ user }}/.config/git
+    state: directory
+
+- name: Create gitconfig file
+  template:
+    src: templates/git_config.j2
+    destination: /home/{{ user }}/.config/git/config
+    owner: "{{ user }}"
+    mode: 0644
