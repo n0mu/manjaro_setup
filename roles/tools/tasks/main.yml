@@ -1,0 +1,9 @@
+---
+- package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    #- firefox
+    - keepassxc
+    - veracrypt
+    - redshift
