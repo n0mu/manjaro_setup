@@ -6,31 +6,30 @@
 
 - name: Activate udiskie at startup
   blockinfile:
-path: /home/{{ user }}/.xinitrc
-block: udiskie &
-marker: "# Usb automount {mark} ANSIBLE MANAGED BLOCK"
-insertbefore: "exec"
+    path: /home/{{ user }}/.xinitrc
+    block: udiskie &
+    marker: "# Usb automount {mark} ANSIBLE MANAGED BLOCK"
+    insertbefore: "exec"
 
 
 - name: Switch 'caps lock' key with 'esc'
-blockinfile:
-path: /home/{{ user }}/.xinitrc
-block: /usr/bin/setxkbmap -option "caps:swapescape"
-marker: "# Switch 'caps lock' key with 'esc' {mark} ANSIBLE MANAGED BLOCK"
-insertbefore: "exec"
+  blockinfile:
+    path: /home/{{ user }}/.xinitrc
+    block: /usr/bin/setxkbmap -option "caps:swapescape"
+    marker: "# Switch 'caps lock' key with 'esc' {mark} ANSIBLE MANAGED BLOCK"
+    insertbefore: "exec"
 
 
 - name: Delete default directories
-file:
-path: "{{ item }}"
-state: absent
-with_items:
-- /home/{{ user }}/Desktop
-- /home/{{ user }}/Videos
-- /home/{{ user }}/Templates
-- /home/{{ user }}/Public
-- /home/{{ user }}/Pictures
-- /home/{{ user }}/Music
-- /home/{{ user }}/Downloads
-- /home/{{ user }}/Documents
-
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+  - /home/{{ user }}/Desktop
+  - /home/{{ user }}/Videos
+  - /home/{{ user }}/Templates
+  - /home/{{ user }}/Public
+  - /home/{{ user }}/Pictures
+  - /home/{{ user }}/Music
+  - /home/{{ user }}/Downloads
+  - /home/{{ user }}/Documents
